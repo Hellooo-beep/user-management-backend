@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 30 ./mvnw spring-boot:run:*)",
+      "Bash(timeout 30 mvn spring-boot:run:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}
