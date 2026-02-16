@@ -1,0 +1,174 @@
+# User Management System - Spring Boot Backend
+
+A RESTful API built with Spring Boot and H2 database for managing users. This backend serves the Android mobile application and any other clients.
+
+## Features
+
+- **Create Users** - Add new users via POST request
+- **Read Users** - Fetch all users or specific user
+- **Update Users** - Modify existing user information
+- **Delete Users** - Remove users from database
+- **Full REST API** - Comprehensive CRUD operations
+- **In-Memory Database** - H2 for quick testing and development
+
+## Technology Stack
+
+- **Framework:** Spring Boot 3.x
+- **Language:** Java 17
+- **Database:** H2 (In-memory)
+- **ORM:** Hibernate/JPA
+- **Build Tool:** Maven
+- **API:** REST
+- **Libraries:** Lombok, Jackson
+
+## Project Structure
+```
+user-management-backend/
+├── src/
+│   ├── main/
+│   │   ├── java/com/example/userapi/
+│   │   │   ├── User.java              - User entity (database model)
+│   │   │   ├── UserRepository.java    - Database access layer
+│   │   │   ├── UserService.java       - Business logic layer
+│   │   │   ├── UserController.java    - REST API endpoints
+│   │   │   └── UserManagementBackendApplication.java
+│   │   └── resources/
+│   │       └── application.properties - Configuration
+│   └── test/
+├── pom.xml                            - Dependencies
+└── README.md
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Java 17 or higher
+- Maven 3.6 or higher
+- Git
+
+### Installation
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/Hellooo-beep/user-management-backend.git
+cd user-management-backend
+```
+
+2. **Build the project:**
+```bash
+mvn clean install
+```
+
+3. **Run the application:**
+```bash
+mvn spring-boot:run
+```
+
+The backend will start on: `http://localhost:8080`
+
+### Verification
+
+Once started, you should see in console:
+```
+Started UserManagementBackendApplication in X.XXX seconds
+```
+
+## API Endpoints
+
+### Create User
+```
+POST /api/users
+Content-Type: application/json
+
+{
+    "name": "Ritika Singh",
+    "email": "ritika@example.com",
+    "phone": "9876543210"
+}
+
+Response (201):
+{
+    "id": 1,
+    "name": "Ritika Singh",
+    "email": "ritika@example.com",
+    "phone": "9876543210"
+}
+```
+
+### Get All Users
+```
+GET /api/users
+
+Response (200):
+[
+    {
+        "id": 1,
+        "name": "Ritika Singh",
+        "email": "ritika@example.com",
+        "phone": "9876543210"
+    }
+]
+```
+
+### Get User by ID
+```
+GET /api/users/1
+
+Response (200):
+{
+    "id": 1,
+    "name": "Ritika Singh",
+    "email": "ritika@example.com",
+    "phone": "9876543210"
+}
+```
+
+### Update User
+```
+PUT /api/users/1
+Content-Type: application/json
+
+{
+    "name": "Ritika Sharma",
+    "email": "ritika.sharma@example.com",
+    "phone": "9999999999"
+}
+
+Response (200):
+{
+    "id": 1,
+    "name": "Ritika Sharma",
+    "email": "ritika.sharma@example.com",
+    "phone": "9999999999"
+}
+```
+
+### Delete User
+```
+DELETE /api/users/1
+
+Response (204): No Content
+```
+
+## Testing with Postman
+
+1. Download Postman: https://www.postman.com/downloads/
+2. Create requests using endpoints above
+3. Test each operation:
+   - POST to create user
+   - GET to retrieve users
+   - PUT to update user
+   - DELETE to remove user
+
+## Database
+
+### H2 In-Memory Database
+
+The application uses H2, a lightweight in-memory database.
+
+**Advantages:**
+- No installation needed
+- Fast for development and testing
+- Data resets when app restarts
+- Perfect           ↓┌─────────────────────────────────────┐│   Service Layer (UserService)       │  Business Logic│   - Validates data                  ││   - Implements business rules       │└────────────────────────
